@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Campaign.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.17;\r\n\r\nerror Campaign__NotEnoughEthEntered();\r\n\r\ncontract Campaign {\r\n    address public owner;\r\n    uint256 public minimumContribution;\r\n    mapping(address => bool) public contributers;\r\n    uint256 public contributersCount;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n        //minimumContribution = minimum;\r\n    }\r\n\r\n    function contribute() public payable {\r\n        //require(msg.value > minimumContribution);\r\n        contributers[msg.sender] = true;\r\n        contributersCount++;\r\n    }\r\n\r\n    //creating modifiers\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner);\r\n        _;\r\n    }\r\n\r\n    modifier onlyContributer() {\r\n        require(contributers[msg.sender] == true);\r\n        _;\r\n    }\r\n\r\n    //function to get balance in the contract\r\n    function getBalance() public view returns (uint256) {\r\n        return address(this).balance;\r\n    }\r\n\r\n    //function to withdraw money to specific address\r\n    function withdrawMoney(address payable recipient) public {\r\n        recipient.transfer(address(this).balance);\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
