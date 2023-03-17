@@ -4,15 +4,31 @@ pragma solidity ^0.8.17;
 
 error Campaign__NotEnoughEthEntered();
 
+contract CampaignFactory {
+    address[] public campaigns;
+
+    function createCampaign(uint256 minimumContribution) public {
+        address newCampaign = address(new Campaign(minimumContribution, msg.sender));
+        campaigns.push(newCampaign);
+    }
+
+    //get all campaigns
+    function getAllCampaigns() public view returns (address[] memory) {
+        return campaigns;
+    }
+
+   
+}
+
 contract Campaign {
     address public owner;
     uint256 public minimumContribution;
     mapping(address => bool) public contributers;
     uint256 public contributersCount;
 
-    constructor() {
-        owner = msg.sender;
-        //minimumContribution = minimum;
+    constructor(uint256 minimum, address creator) {
+        owner = creator;
+        minimumContribution = minimum;
     }
 
     function contribute() public payable {
@@ -37,6 +53,10 @@ contract Campaign {
         return address(this).balance;
     }
 
+    //get minimum ammount
+    function getMinimumContribution() public view returns (uint256) {
+        return minimumContribution;
+    }
     //function to withdraw money to specific address
     function withdrawMoney(address payable recipient) public {
         recipient.transfer(address(this).balance);

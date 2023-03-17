@@ -9,7 +9,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("Deploying Campaign and waiting for confirmations...");
   console.log(deployer);
   //Deploys the Campaign contract
-  const campaign = await deploy("Campaign", {
+  const campaign = await deploy("CampaignFactory", {
     from: deployer,
     args: [],
     log: false,
@@ -22,18 +22,49 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("----------------------------------------------------");
 
   const campaignInstance = await ethers.getContractAt(
-    "Campaign",
+    "CampaignFactory",
     campaign.address
   );
-  console.log(campaignInstance);
-  const value = await campaignInstance.getBalance();
-  console.log("Balance is", ethers.utils.formatEther(value));
 
-  const add = await campaignInstance.contribute({
-    value: ethers.utils.parseEther("1.0"),
-  });
-  add.wait(1);
+  //Verify the Campaign contract works
+  log("----------------------------------------------------");
+  log("Verifying Campaign contract...");
+  await campaignInstance.deployed();
+  log("----------------------------------------------------");
 
-  const value2 = await campaignInstance.getBalance();
-  console.log("Updated Balance is", ethers.utils.formatEther(value2));
+  //get all campaigns
+  const campaigns = await campaignInstance.getAllCampaigns();
+  log("----------------------------------------------------");
+  log("All Campaigns:", campaigns);
+  log("----------------------------------------------------");
+
+  //deploy another campaign
+  log("----------------------------------------------------");
+  log("Deploying another Campaign...");
+  const campaign2 = await campaignInstance.createCampaign(
+    //pass argue to the function
+    ethers.utils.parseEther("10")
+  );
+  log("----------------------------------------------------");
+
+  //get all campaigns
+  const campaigns2 = await campaignInstance.getAllCampaigns();
+  log("----------------------------------------------------");
+  log("All Campaigns2:", campaigns2);
+  log("----------------------------------------------------");
+
+  //use first address of campaigns to get minimum ammount
+
+  const actualCampagn = await ethers.getContractAt("Campaign", campaigns2[0]);
+
+  //get minimum ammount
+  const minimumAmount = await actualCampagn.getMinimumContribution();
+  //const minimumAmountInWei = ethers.utils.parseUnits(minimumAmount._hex, 18);
+
+  log("----------------------------------------------------");
+  console.log(
+    "Minimum contribution amount:",
+    ethers.utils.formatEther(minimumAmount)
+  );
+  log("----------------------------------------------------");
 };

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\Code\\FYP\\FundSpirit-Contract\\contracts\\Campaign.sol": {
-      "lastModificationDate": 1666626305857,
-      "contentHash": "a0e82a379eb3c97bd60a4144493cb3b6",
+      "lastModificationDate": 1679053844543,
+      "contentHash": "fdf583eafb14feee7d217063ab7d3d97",
       "sourceName": "contracts/Campaign.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -40,7 +40,8 @@
         "^0.8.17"
       ],
       "artifacts": [
-        "Campaign"
+        "Campaign",
+        "CampaignFactory"
       ]
     }
   }
