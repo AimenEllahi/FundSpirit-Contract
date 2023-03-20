@@ -7,7 +7,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   log("----------------------------------------------------");
   log("Deploying Campaign and waiting for confirmations...");
-  console.log(deployer);
+
   //Deploys the Campaign contract
   const campaign = await deploy("CampaignFactory", {
     from: deployer,
@@ -57,14 +57,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   const actualCampagn = await ethers.getContractAt("Campaign", campaigns2[0]);
 
-  //get minimum ammount
-  const minimumAmount = await actualCampagn.getMinimumContribution();
-  //const minimumAmountInWei = ethers.utils.parseUnits(minimumAmount._hex, 18);
-
-  log("----------------------------------------------------");
-  console.log(
-    "Minimum contribution amount:",
-    ethers.utils.formatEther(minimumAmount)
-  );
-  log("----------------------------------------------------");
+  //contribute to campaign
+  await actualCampagn.contribute({
+    value: ethers.utils.parseEther("15"),
+  });
 };
