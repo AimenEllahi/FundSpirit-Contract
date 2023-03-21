@@ -7,8 +7,10 @@ import "./Campaign.sol";
 contract CampaignFactory {
     address[] public campaigns;
 
-    function createCampaign(uint256 minimumContribution) public {
-        address newCampaign = address(new Campaign(minimumContribution, msg.sender));
+    function createCampaign(uint256 minimumContribution
+    , string memory name, string memory description, string memory tagLine, string[] memory tags
+    ) public {
+        address newCampaign = address(new Campaign(minimumContribution, msg.sender, name, description, tagLine, tags));
         campaigns.push(newCampaign);
     }
 

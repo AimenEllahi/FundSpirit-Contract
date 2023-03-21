@@ -12,15 +12,38 @@ contract Campaign {
     address public owner;
     uint256 public minimumContribution;
     mapping(address => bool) public contributers;
-    //minimum disburse amount
    uint256 constant public minimumDisburseAllowed = 1 ether; // hardcoded minimum disburse amount
     uint256 public contributersCount;
-    //variable to store objects of all organizations that are part of this campaign
+    //mapping to store organizations
     address[] public organizations;
 
-    constructor(uint256 minimum, address creator) {
+    
+
+    //make a struct
+    struct CampaignDetails {
+        string name;
+        string description;
+       // string campaignImageHash;
+        string tagLine;
+        string[] tags;
+        uint256 likes;
+    }
+    CampaignDetails public details;
+ 
+
+    constructor(uint256 minimum, address creator
+    , string memory name, string memory description, string memory tagLine, string[] memory tags
+    ) {
         owner = creator;
         minimumContribution = minimum;
+        //intialize campaignDetails
+        details.name = name;
+        details.description = description;
+        details.tagLine = tagLine;
+        details.tags = new string[](2);
+        details.tags = tags;
+        details.likes = 0;
+
     }
 
     function contribute() public payable {
@@ -85,5 +108,11 @@ contract Campaign {
         for (uint256 i = 0; i < organizations.length; i++) {
             Organization(organizations[i]).contribute{value: minimumDisburseAmount}();
         }
+    }
+
+    //function to get details
+    function getDetails() public view returns (CampaignDetails memory) {
+    
+        return details;
     }
 }
