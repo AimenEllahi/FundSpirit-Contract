@@ -36,9 +36,33 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   //deploy another organization
   log("----------------------------------------------------");
   log("Deploying another Organization...");
-  const organization2 = await organizationInstance.createOrganization(
+  await organizationInstance.createOrganization(
     //pass argue to the function
     "Organization 2",
+    "Some description",
+    "Some Logo",
+    "Some Website"
+  );
+
+  await organizationInstance.createOrganization(
+    //pass argue to the function
+    "Organization 3",
+    "Some description",
+    "Some Logo",
+    "Some Website"
+  );
+
+  await organizationInstance.createOrganization(
+    //pass argue to the function
+    "Organization 4",
+    "Some description",
+    "Some Logo",
+    "Some Website"
+  );
+
+  await organizationInstance.createOrganization(
+    //pass argue to the function
+    "Organization 5",
     "Some description",
     "Some Logo",
     "Some Website"
@@ -52,13 +76,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("----------------------------------------------------");
 
   //get data of firt organization
-  const actualOrganization = await ethers.getContractAt(
-    "Organization",
-    organizations[0]
-  );
-  const details = await actualOrganization.getDetails();
+  // const actualOrganization = await ethers.getContractAt(
+  //   "Organization",
+  //   organizations[0]
+  // );
+  // const details = await actualOrganization.getDetails();
 
-  log("----------------------------------------------------");
-  log("Organization Details:", details);
-  log("----------------------------------------------------");
+  // log("----------------------------------------------------");
+  // log("Organization Details:", details);
+  // log("----------------------------------------------------");
 };

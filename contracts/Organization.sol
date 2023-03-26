@@ -14,12 +14,25 @@ contract Organization{
     uint256 public campaignsCount;
     address[] public campaigns;
 
+
+    //make a struct
+    struct OrganizationDetails {
+
+        string name;
+        string description;
+        string website;
+        string logo;
+     
+    }
+    OrganizationDetails public details;
+
+
     constructor(string memory _name, string memory _description, string memory _website, string memory _logo, address creator) {
         owner = creator;
-        name = _name;
-        description = _description;
-        website = _website;
-        logo = _logo;
+        details.name = _name;
+        details.description = _description;
+        details.website = _website;
+        details.logo = _logo;
     }
 
     function contribute() public payable {
@@ -71,8 +84,8 @@ contract Organization{
     }
 
     //get details of organization
-    function getDetails() public view returns (string memory, string memory, string memory, string memory, uint256, uint256) {
-        return (name, description, website, logo, getBalance(), getMinimumContribution());
+    function getDetails() public view returns (OrganizationDetails memory) {
+        return details;
     }
 
     //get campaign count

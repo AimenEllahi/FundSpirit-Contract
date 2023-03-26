@@ -104,7 +104,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const actualCampagn = await ethers.getContractAt("Campaign", campaigns2[0]);
 
   //contribute to campaign
-  await actualCampagn.contribute({
+  await actualCampagn.fund({
     value: ethers.utils.parseEther("15"),
   });
 };

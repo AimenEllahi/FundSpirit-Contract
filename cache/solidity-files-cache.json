@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\Code\\FYP\\FundSpirit-Contract\\contracts\\Campaign.sol": {
-      "lastModificationDate": 1679425479136,
-      "contentHash": "15ad61b389d8aa4a3fe0c0fa7af634fd",
+      "lastModificationDate": 1679749907840,
+      "contentHash": "900bedb3549346f943a998a828d521cf",
       "sourceName": "contracts/Campaign.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -46,8 +46,8 @@
       ]
     },
     "D:\\Code\\FYP\\FundSpirit-Contract\\contracts\\Organization.sol": {
-      "lastModificationDate": 1679222054658,
-      "contentHash": "ba919444e4dafcdaf57c3e0642e999eb",
+      "lastModificationDate": 1679754895183,
+      "contentHash": "b81e293b268ac5086929850c7e1ca511",
       "sourceName": "contracts/Organization.sol",
       "solcConfig": {
         "version": "0.8.17",
