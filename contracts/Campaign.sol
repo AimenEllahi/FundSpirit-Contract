@@ -17,33 +17,10 @@ contract Campaign {
     //mapping to store organizations
     address[] public organizations;
 
-    
-
-    //make a struct
-    struct CampaignDetails {
-        string name;
-        string description;
-       // string campaignImageHash;
-        string tagLine;
-        string[] tags;
-        uint256 likes;
-    }
-    CampaignDetails public details;
  
 
-    constructor(uint256 minimum, address creator
-    , string memory name, string memory description, string memory tagLine, string[] memory tags
-    ) {
-        owner = creator;
-        minimumContribution = minimum;
-        //intialize campaignDetails
-        details.name = name;
-        details.description = description;
-        details.tagLine = tagLine;
-        details.tags = new string[](2);
-        details.tags = tags;
-        details.likes = 0;
-
+    constructor() {
+        owner = msg.sender;
     }
 
     function fund() public payable {
@@ -110,9 +87,5 @@ contract Campaign {
         }
     }
 
-    //function to get details
-    function getDetails() public view returns (CampaignDetails memory) {
-    
-        return details;
-    }
+ 
 }

@@ -7,11 +7,14 @@ import "./Campaign.sol";
 contract CampaignFactory {
     address[] public campaigns;
 
-    function createCampaign(uint256 minimumContribution
-    , string memory name, string memory description, string memory tagLine, string[] memory tags
-    ) public {
-        address newCampaign = address(new Campaign(minimumContribution, msg.sender, name, description, tagLine, tags));
+    function createCampaign(
+        
+    ) public returns (address campaign) {
+        address newCampaign = address(new Campaign());
         campaigns.push(newCampaign);
+  
+
+        return newCampaign;
     }
 
     //get all campaigns
