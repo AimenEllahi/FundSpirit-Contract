@@ -12,8 +12,6 @@ contract CampaignFactory {
     ) public returns (address campaign) {
         address newCampaign = address(new Campaign());
         campaigns.push(newCampaign);
-  
-
         return newCampaign;
     }
 

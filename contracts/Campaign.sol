@@ -18,9 +18,13 @@ contract Campaign {
     address[] public organizations;
 
  
+//constructor with name as parameter
 
-    constructor() {
+    constructor(
+       
+    ) {
         owner = msg.sender;
+    
     }
 
     function fund() public payable {
