@@ -4,10 +4,7 @@ pragma solidity ^0.8.17;
 
 contract Organization{
     address public owner;
-    string public name;
-    string public description;
-    string public website;
-    string public logo;
+
     uint256 public minimumContribution;
     mapping(address => bool) public contributers;
     uint256 public contributersCount;
@@ -15,24 +12,10 @@ contract Organization{
     address[] public campaigns;
 
 
-    //make a struct
-    struct OrganizationDetails {
 
-        string name;
-        string description;
-        string website;
-        string logo;
-     
-    }
-    OrganizationDetails public details;
-
-
-    constructor(string memory _name, string memory _description, string memory _website, string memory _logo, address creator) {
-        owner = creator;
-        details.name = _name;
-        details.description = _description;
-        details.website = _website;
-        details.logo = _logo;
+    constructor() {
+        owner = msg.sender;
+   
     }
 
     function contribute() public payable {
@@ -81,11 +64,6 @@ contract Organization{
             counter++;
         }
         return contributersArray;
-    }
-
-    //get details of organization
-    function getDetails() public view returns (OrganizationDetails memory) {
-        return details;
     }
 
     //get campaign count

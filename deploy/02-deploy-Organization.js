@@ -27,53 +27,53 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     organization.address
   );
 
-  //Verify the Organization contract works
-  log("----------------------------------------------------");
-  log("Verifying Organization contract...");
-  await organizationInstance.deployed();
-  log("----------------------------------------------------");
+  // //Verify the Organization contract works
+  // log("----------------------------------------------------");
+  // log("Verifying Organization contract...");
+  // await organizationInstance.deployed();
+  // log("----------------------------------------------------");
 
-  //deploy another organization
-  log("----------------------------------------------------");
-  log("Deploying another Organization...");
-  await organizationInstance.createOrganization(
-    //pass argue to the function
-    "Organization 2",
-    "Some description",
-    "Some Logo",
-    "Some Website"
-  );
+  // //deploy another organization
+  // log("----------------------------------------------------");
+  // log("Deploying another Organization...");
+  // await organizationInstance.createOrganization(
+  //   //pass argue to the function
+  //   "Organization 2",
+  //   "Some description",
+  //   "Some Logo",
+  //   "Some Website"
+  // );
 
-  await organizationInstance.createOrganization(
-    //pass argue to the function
-    "Organization 3",
-    "Some description",
-    "Some Logo",
-    "Some Website"
-  );
+  // await organizationInstance.createOrganization(
+  //   //pass argue to the function
+  //   "Organization 3",
+  //   "Some description",
+  //   "Some Logo",
+  //   "Some Website"
+  // );
 
-  await organizationInstance.createOrganization(
-    //pass argue to the function
-    "Organization 4",
-    "Some description",
-    "Some Logo",
-    "Some Website"
-  );
+  // await organizationInstance.createOrganization(
+  //   //pass argue to the function
+  //   "Organization 4",
+  //   "Some description",
+  //   "Some Logo",
+  //   "Some Website"
+  // );
 
-  await organizationInstance.createOrganization(
-    //pass argue to the function
-    "Organization 5",
-    "Some description",
-    "Some Logo",
-    "Some Website"
-  );
-  log("----------------------------------------------------");
+  // await organizationInstance.createOrganization(
+  //   //pass argue to the function
+  //   "Organization 5",
+  //   "Some description",
+  //   "Some Logo",
+  //   "Some Website"
+  // );
+  // log("----------------------------------------------------");
 
-  //get all organizations
-  const organizations = await organizationInstance.getAllOrganizations();
-  log("----------------------------------------------------");
-  log("All Organizations:", organizations);
-  log("----------------------------------------------------");
+  // //get all organizations
+  // const organizations = await organizationInstance.getAllOrganizations();
+  // log("----------------------------------------------------");
+  // log("All Organizations:", organizations);
+  // log("----------------------------------------------------");
 
   //get data of firt organization
   // const actualOrganization = await ethers.getContractAt(

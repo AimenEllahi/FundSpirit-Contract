@@ -7,6 +7,7 @@ import "./Organization.sol";
 error Campaign__NotEnoughEthEntered();
 error Campaign__AlreadyEnrolled();
 error Campaign__MaximumCampaignsReached();
+error Campaign__NoOrganizationEnrolled();
 
 contract Campaign {
     address public owner;
@@ -79,6 +80,11 @@ contract Campaign {
         //check if enough funds are available
         if (getBalance() < minimumDisburseAllowed) {
             revert Campaign__NotEnoughEthEntered();
+        }
+
+        //No organizations enrolled
+        if(organizations.length <= 0){
+            revert Campaign__NoOrganizationEnrolled();
         }
 
         //equal share of funds

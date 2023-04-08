@@ -8,8 +8,8 @@ import "./Organization.sol";
 contract OrganizationFactory{
     address[] public organizations;
 
-    function createOrganization(string memory name, string memory description, string memory website, string memory logo) public {
-        address newOrganization = address(new Organization(name, description, website, logo, msg.sender));
+    function createOrganization() public {
+        address newOrganization = address(new Organization());
         organizations.push(newOrganization);
     }
 
