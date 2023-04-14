@@ -4,6 +4,7 @@ require("hardhat-deploy");
 require("solidity-coverage");
 require("hardhat-gas-reporter");
 require("hardhat-contract-sizer");
+require("hardhat-watcher");
 require("dotenv").config();
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL;

@@ -3,6 +3,7 @@
 pragma solidity ^0.8.17;
 import "./Organization.sol";
 
+import "hardhat/console.sol";
 
 error Campaign__NotEnoughEthEntered();
 error Campaign__AlreadyEnrolled();
@@ -13,7 +14,7 @@ contract Campaign {
     address public owner;
     uint256 public minimumContribution;
     mapping(address => bool) public contributers;
-   uint256 constant public minimumDisburseAllowed = 1 ether; // hardcoded minimum disburse amount
+   uint256 constant public minimumDisburseAllowed = .001 ether; // hardcoded minimum disburse amount
     uint256 public contributersCount;
     //mapping to store organizations
     address[] public organizations;
@@ -25,6 +26,7 @@ contract Campaign {
        
     ) {
         owner = msg.sender;
+        organizations = new address[](0);
     
     }
 
@@ -68,19 +70,19 @@ contract Campaign {
             }
         }
 
-        //check if organization is enrolled in 3 campaigns
-         if (Organization(organization).getCampaignsCount() >= 3) {
-            revert Campaign__MaximumCampaignsReached();
-         }
+        // //check if organization is enrolled in 3 campaigns
+        //  if (Organization(organization).getCampaignsCount() >= 3) {
+        //     revert Campaign__MaximumCampaignsReached();
+        //  }
         organizations.push(organization);
     }
 
     //disburse all funds to all organizations equally
-    function disburseFunds() public onlyOwner {
+    function disburseFunds() public {
         //check if enough funds are available
-        if (getBalance() < minimumDisburseAllowed) {
-            revert Campaign__NotEnoughEthEntered();
-        }
+        // if (getBalance() < minimumDisburseAllowed) {
+        //     revert Campaign__NotEnoughEthEntered();
+        // }
 
         //No organizations enrolled
         if(organizations.length <= 0){
@@ -90,11 +92,19 @@ contract Campaign {
         //equal share of funds
         uint256 minimumDisburseAmount = getBalance() / organizations.length;
         
-        
+      
         //disburse funds
         for (uint256 i = 0; i < organizations.length; i++) {
+            console.log("Funds In Campaign", getBalance());
+            console.log("Balance before sending to " , organizations[i] ,Organization(organizations[i]).getBalance());
             Organization(organizations[i]).contribute{value: minimumDisburseAmount}();
+            console.log("Balance after sendingto ", organizations[i] , Organization(organizations[i]).getBalance());
         }
+    }
+
+    //get enrolled Organizations
+    function getOrganizations() public view returns (address[] memory) {
+        return organizations;
     }
 
  

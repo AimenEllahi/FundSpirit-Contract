@@ -2,6 +2,9 @@
 
 pragma solidity ^0.8.17;
 
+
+import "hardhat/console.sol";
+
 contract Organization{
     address public owner;
 
@@ -20,6 +23,7 @@ contract Organization{
 
     function contribute() public payable {
         //require(msg.value > minimumContribution);
+        console.log("We are here");
         contributers[msg.sender] = true;
         contributersCount++;
     }
@@ -35,10 +39,12 @@ contract Organization{
         _;
     }
 
-    //function to get balance in the contract
+    
+       //function to get balance in the contract
     function getBalance() public view returns (uint256) {
         return address(this).balance;
     }
+
 
     //get minimum ammount
     function getMinimumContribution() public view returns (uint256) {
