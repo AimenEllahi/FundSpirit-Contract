@@ -9,23 +9,23 @@ contract Organization{
     address public owner;
 
     uint256 public minimumContribution;
-    mapping(address => bool) public contributers;
-    uint256 public contributersCount;
     uint256 public campaignsCount;
     address[] public campaigns;
+    uint256 private totalDonations;
 
-
+  
 
     constructor() {
         owner = msg.sender;
+        totalDonations = 0;
    
     }
 
     function contribute() public payable {
         //require(msg.value > minimumContribution);
         console.log("We are here");
-        contributers[msg.sender] = true;
-        contributersCount++;
+     totalDonations += msg.value;
+        
     }
 
     //creating modifiers
@@ -34,10 +34,6 @@ contract Organization{
         _;
     }
 
-    modifier onlyContributer() {
-        require(contributers[msg.sender] == true);
-        _;
-    }
 
     
        //function to get balance in the contract
@@ -61,18 +57,7 @@ contract Organization{
         recipient.transfer(getBalance());
     }
 
-    //function to get all contributers
-    function getAllContributers() public view returns (address[] memory) {
-        address[] memory contributersArray = new address[](contributersCount);
-        uint256 counter = 0;
-        for (uint256 i = 0; i < contributersCount; i++) {
-            contributersArray[counter] = contributersArray[i];
-            counter++;
-        }
-        return contributersArray;
-    }
-
-    //get campaign count
+   //get campaign count
     function getCampaignsCount() public view returns (uint256) {
         return campaignsCount;
     }
