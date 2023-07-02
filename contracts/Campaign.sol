@@ -95,10 +95,10 @@ contract Campaign {
       
         //disburse funds
         for (uint256 i = 0; i < organizations.length; i++) {
-            console.log("Funds In Campaign", getBalance());
-            console.log("Balance before sending to " , organizations[i] ,Organization(organizations[i]).getBalance());
+            //console.log("Funds In Campaign", getBalance());
+            //console.log("Balance before sending to " , organizations[i] ,Organization(organizations[i]).getBalance());
             Organization(organizations[i]).contribute{value: minimumDisburseAmount}();
-            console.log("Balance after sendingto ", organizations[i] , Organization(organizations[i]).getBalance());
+            //console.log("Balance after sendingto ", organizations[i] , Organization(organizations[i]).getBalance());
         }
     }
 

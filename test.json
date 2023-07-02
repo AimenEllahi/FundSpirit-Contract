@@ -1,0 +1,33 @@
+{
+  "@name": "Mocha Tests",
+  "@time": "2.580",
+  "@tests": "1",
+  "@failures": "1",
+  "testsuite": [
+    {
+      "@name": "Root Suite",
+      "@timestamp": "2023-05-31T13:30:54",
+      "@tests": "0",
+      "@time": "0.000",
+      "@failures": "0"
+    },
+    {
+      "@name": "Campaign",
+      "@timestamp": "2023-05-31T13:30:54",
+      "@tests": "1",
+      "@file": "D:\\Code\\FYP\\FundSpirit-Contract\\test\\sample.test.js",
+      "@time": "2.578",
+      "@failures": "1",
+      "testcase": {
+        "@name": "Campaign \"before each\" hook for \"should fund a campaign\"",
+        "@time": "2.575",
+        "@classname": "\"before each\" hook for \"should fund a campaign\"",
+        "failure": {
+          "@message": "mocha.done is not a function",
+          "@type": "TypeError",
+          "#text": "TypeError: mocha.done is not a function\n    at Context.<anonymous> (test\\sample.test.js:29:11)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at runNextTicks (node:internal/process/task_queues:65:3)\n    at listOnTimeout (node:internal/timers:528:9)\n    at processTimers (node:internal/timers:502:7)"
+        }
+      }
+    }
+  ]
+}

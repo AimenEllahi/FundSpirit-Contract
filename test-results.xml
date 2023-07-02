@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="34.080" tests="2" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-06-01T22:04:04" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Blockchain Test" timestamp="2023-06-01T22:04:04" tests="0" file="D:\Code\FYP\FundSpirit-Contract\test\sample.test.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Campaign-" timestamp="2023-06-01T22:04:04" tests="2" file="D:\Code\FYP\FundSpirit-Contract\test\sample.test.js" time="3.940" failures="0">
+    <testcase name="Blockchain Test Campaign- Should fund a campaign" time="0.067" classname="Should fund a campaign">
+    </testcase>
+    <testcase name="Blockchain Test Campaign- Should be able to enroll in campaign" time="0.037" classname="Should be able to enroll in campaign">
+    </testcase>
+  </testsuite>
+</testsuites>

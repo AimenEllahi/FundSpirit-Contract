@@ -23,7 +23,7 @@ contract Organization{
 
     function contribute() public payable {
         //require(msg.value > minimumContribution);
-        console.log("We are here");
+    
      totalDonations += msg.value;
         
     }

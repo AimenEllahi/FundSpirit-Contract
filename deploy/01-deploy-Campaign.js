@@ -6,7 +6,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const chainId = network.config.chainId;
 
   log("----------------------------------------------------");
-  log("Deploying Campaign and waitin  g for confirmations...");
+  log("Deploying Campaign and waitinng for confirmations...");
 
   //Deploys the Campaign contract
   let campaigns = [];
@@ -25,14 +25,16 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("Campaign deployed to:", campaign.address);
   log("----------------------------------------------------");
 
-  const campaignInstance = await ethers.getContractAt(
-    "Campaign",
-    campaign.address
-  );
+  if (chainId === "31337") {
+    const campaignInstance = await ethers.getContractAt(
+      "Campaign",
+      campaign.address
+    );
 
-  //get funds of campaignInstance
-  const funds = await campaignInstance.getBalance();
-  log("----------------------------------------------------");
-  log("Funds of Campaign:", funds);
-  log("----------------------------------------------------");
+    //get funds of campaignInstance
+    const funds = await campaignInstance.getBalance();
+    log("----------------------------------------------------");
+    log("Funds of Campaign:", funds);
+    log("----------------------------------------------------");
+  }
 };
