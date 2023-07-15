@@ -70,19 +70,13 @@ contract Campaign {
             }
         }
 
-        // //check if organization is enrolled in 3 campaigns
-        //  if (Organization(organization).getCampaignsCount() >= 3) {
-        //     revert Campaign__MaximumCampaignsReached();
-        //  }
+       
         organizations.push(organization);
     }
 
     //disburse all funds to all organizations equally
     function disburseFunds() public {
-        //check if enough funds are available
-        // if (getBalance() < minimumDisburseAllowed) {
-        //     revert Campaign__NotEnoughEthEntered();
-        // }
+        
 
         //No organizations enrolled
         if(organizations.length <= 0){

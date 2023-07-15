@@ -21,9 +21,9 @@ contract Organization{
    
     }
 
+
     function contribute() public payable {
         //require(msg.value > minimumContribution);
-    
      totalDonations += msg.value;
         
     }
@@ -34,27 +34,9 @@ contract Organization{
         _;
     }
 
-
-    
        //function to get balance in the contract
     function getBalance() public view returns (uint256) {
         return address(this).balance;
-    }
-
-
-    //get minimum ammount
-    function getMinimumContribution() public view returns (uint256) {
-        return minimumContribution;
-    }
-    //function to withdraw money to specific address
-    function withdrawMoney(address payable recipient, uint256 amount) public onlyOwner {
-        require(amount <= getBalance());
-        recipient.transfer(amount);
-    }
-
-    //function to withdraw money to specific address
-    function withdrawAllMoney(address payable recipient) public onlyOwner {
-        recipient.transfer(getBalance());
     }
 
    //get campaign count
@@ -79,4 +61,13 @@ contract Organization{
         require(campaignsCount < 3);
         campaigns.push(campaignAddress);
     }
+
+    //pay 
+    function payToVendor(address payable vendor, uint256 amount) public {
+        require(amount <= getBalance(), "Insufficient contract balance");
+
+         vendor.transfer(amount);
+
+    }
+
 }
