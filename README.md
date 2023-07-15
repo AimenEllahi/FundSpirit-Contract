@@ -1,14 +1,3 @@
-# Solidity Template
-
-This is a basic hardhat template to get you started writing and compiling contract.
-The template is configured with some sensible defaults but tries to stay minimal.
-It comes with most sensible plugins already installed via the suggested `hardhat-toolbox`.
-
-- [Hardhat](https://github.com/nomiclabs/hardhat): compile and run the smart contracts on a local development network
-- [TypeChain](https://github.com/ethereum-ts/TypeChain): generate TypeScript types for smart contracts
-- [Ethers](https://github.com/ethers-io/ethers.js/): renowned Ethereum library and wallet implementation
-
-Use the template by clicking the "Use this template" button at the top of the page.
 
 ## Usage
 
@@ -18,7 +7,7 @@ Before running any command, make sure to install dependencies:
 
 ```sh
 npm install
-//or
+#or
 yarn install 
 ```
 
@@ -28,7 +17,7 @@ Compile the smart contracts with Hardhat:
 
 ```sh
 npx hardhat compile
-//or
+#or
 yarn compile
 ```
 
@@ -38,7 +27,7 @@ Run the tests:
 
 ```sh
 npx hardhat test
-//or
+#or
 yarn test
 ```
 
@@ -50,7 +39,7 @@ To take a snapshot of the contract's gas costs
 
 ```sh
 npx hardhat test:gas
-//or
+#or
 yarn test:gas
 ```
 
